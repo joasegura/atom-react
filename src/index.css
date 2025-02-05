@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0a0a0a;
+  color: #e5e5e5;
+}
+
+.tech-gradient {
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+}
+
+.glow {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+}
+
+.tech-border {
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+@keyframes pulse-blue {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scale-up {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.6s ease-out;
+}
+
+.scale-up.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: cursor 1s infinite step-end;
+}
+
+@keyframes cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  pointer-events: none;
+  animation: particle-float 3s infinite ease-in-out;
+}
+
+@keyframes particle-float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(var(--translate-x), var(--translate-y)) rotate(var(--rotate));
+  }
+}
+
+/* Nuevas animaciones y efectos */
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5),
+                0 0 10px rgba(59, 130, 246, 0.5),
+                0 0 15px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8),
+                0 0 20px rgba(59, 130, 246, 0.8),
+                0 0 30px rgba(59, 130, 246, 0.8);
+  }
+}
+
+.neon-effect {
+  animation: neon-pulse 2s infinite;
+}
+
+@keyframes rotate-3d {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
+
+.rotate-on-hover:hover {
+  animation: rotate-3d 1.5s linear;
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(-5px, 5px);
+  }
+  20% {
+    clip-path: inset(15% 0 65% 0);
+    transform: translate(5px, -5px);
+  }
+  40% {
+    clip-path: inset(70% 0 10% 0);
+    transform: translate(-5px, 5px);
+  }
+  60% {
+    clip-path: inset(25% 0 55% 0);
+    transform: translate(5px, -5px);
+  }
+  80% {
+    clip-path: inset(85% 0 5% 0);
+    transform: translate(-5px, 5px);
+  }
+  100% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(5px, -5px);
+  }
+}
+
+.glitch-effect:hover {
+  position: relative;
+}
+
+.glitch-effect:hover::before,
+.glitch-effect:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+}
+
+.glitch-effect:hover::before {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #00ffff;
+  z-index: -1;
+}
+
+.glitch-effect:hover::after {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+  color: #ff00ff;
+  z-index: -2;
+}
+
+.cyber-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #00ffff, #ff00ff, #00ffff);
+  z-index: -1;
+  animation: cyber-border-animation 6s linear infinite;
+}
+
+@keyframes cyber-border-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.matrix-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: matrix-animation 20s linear infinite;
+  opacity: 0.1;
+}
+
+@keyframes matrix-animation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+.hover-3d {
+  transition: transform 0.3s ease-out;
+  transform-style: preserve-3d;
+}
+
+.hover-3d:hover {
+  transform: translateZ(20px) rotateX(10deg) rotateY(10deg);
+}
+
+/* Nuevos efectos para About y Services */
+.hover-3d-card {
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) rotateZ(var(--rotate-z));
+  transition: transform 0.3s ease-out;
+}
+
+.cyber-circle {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cyber-circle::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from 0deg, #00ffff, #ff00ff, #00ffff);
+  animation: rotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.cyber-circle:hover::before {
+  opacity: 0.5;
+}
+
+/* Ajuste para los elementos de navegación */
+nav .cyber-circle {
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+}
+
+nav .cyber-circle:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* Ajuste para el logo */
+nav .cyber-circle[class*="p-2"] {
+  border-radius: 9999px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.neon-text {
+  text-shadow: 0 0 5px rgba(59, 130, 246, 0.5),
+               0 0 10px rgba(59, 130, 246, 0.3);
+  transition: text-shadow 0.3s ease;
+}
+
+.neon-text:hover {
+  text-shadow: 0 0 5px rgba(59, 130, 246, 0.8),
+               0 0 10px rgba(59, 130, 246, 0.5),
+               0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.service-card {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.service-card-glow {
+  background: radial-gradient(circle at var(--glow-position, 50% 50%), 
+              rgba(59, 130, 246, 0.15) 0%,
+              transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover .service-card-glow {
+  opacity: 1;
+}
+
+@keyframes animate-glow {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+.animate-glow {
+  animation: animate-glow 3s ease-in-out infinite;
+}
