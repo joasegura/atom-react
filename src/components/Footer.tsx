@@ -21,7 +21,7 @@ const Footer = () => {
               Enlaces Rápidos
             </h3>
             <ul className="mt-4 space-y-4">
-              {['Inicio', 'Nosotros', 'Servicios', 'Proceso', 'Portafolio', 'Contacto'].map((item) => (
+              {['Inicio', 'Nosotros', 'Servicios', 'Proceso', 'Contacto'].map((item) => (
                 <li key={item}>
                   <a href={`#${item.toLowerCase()}`} className="text-base text-gray-400 hover:text-blue-400 transition-colors">
                     {item}

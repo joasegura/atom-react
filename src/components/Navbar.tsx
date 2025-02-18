@@ -9,7 +9,6 @@ const Navbar = () => {
     { name: 'Nosotros', href: '#about' },
     { name: 'Servicios', href: '#services' },
     { name: 'Proceso', href: '#process' },
-    { name: 'Portafolio', href: '#portfolio' },
     { name: 'Contacto', href: '#contact' },
   ];
 
