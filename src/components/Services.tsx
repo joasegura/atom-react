@@ -54,7 +54,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`relative group scale-up ${isSectionVisible ? 'visible' : ''} service-card`}
+              className={`relative group w-full h-auto scale-up ${isSectionVisible ? 'visible' : ''} service-card`}
               style={{ transitionDelay: `${index * 100}ms` }}
               onMouseMove={(e) => {
                 const card = e.currentTarget;
@@ -80,7 +80,7 @@ const Services = () => {
               }}
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg opacity-75 group-hover:opacity-100 transition-all duration-300 blur animate-glow"></div>
-              <div className="relative p-6 bg-gray-900 rounded-lg tech-border group-hover:transform group-hover:scale-[1.02] transition-all duration-300">
+              <div className="relative md:h-full p-6 bg-gray-900 rounded-lg tech-border group-hover:transform group-hover:scale-[1.02] transition-all duration-300">
                 <div className="w-12 h-12 mx-auto flex items-center justify-center rounded-xl bg-blue-900/30 group-hover:animate-float cyber-circle">
                   {service.icon}
                 </div>
