@@ -96,10 +96,10 @@ const Hero = () => {
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
-                {/* <Badge variant="outline" className="w-fit"> */}
-                <Zap className="w-3 h-3 mr-1" />
-                Innovación Tecnológica
-                {/* </Badge> */}
+                <div className="w-fit flex justify-center items-center text-sm">
+                  <Zap className="w-3 h-3 mr-1" />
+                  <span className="text-sm">Innovación Tecnológica</span>
+                </div>
                 <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl animate-float">
                   <span
                     className="block glitch-effect"
@@ -155,16 +155,16 @@ const Hero = () => {
               <div className="relative w-full">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-3xl opacity-20 animate-pulse"></div>
                 <img
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/mockup.png?height=400&width=600"
                   width="600"
                   height="400"
                   alt="Desarrollo de Software"
-                  className="relative mx-auto aspect-video overflow-hidden rounded-2xl object-cover shadow-2xl"
+                  className="relative mx-auto overflow-hidden rounded-2xl object-cover object-top shadow-2xl"
                 />
                 <div className="absolute -bottom-4 right-0 md:-bottom-4 md:-right-4 bg-white rounded-lg shadow-lg p-4 border">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium">
+                    <span className="text-sm text-gray-600 font-medium">
                       Sistema en línea
                     </span>
                   </div>
@@ -172,7 +172,9 @@ const Hero = () => {
                 <div className="absolute -top-4 -left-4 bg-white rounded-lg shadow-lg p-4 border">
                   <div className="flex items-center space-x-2">
                     <Code className="w-4 h-4 text-blue-500" />
-                    <span className="text-sm font-medium">100% Custom</span>
+                    <span className="text-sm text-gray-600 font-medium">
+                      100% Custom
+                    </span>
                   </div>
                 </div>
               </div>
