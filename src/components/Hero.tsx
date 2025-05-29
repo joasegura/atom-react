@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { ArrowRight, Code, Zap, Shield, Users } from "lucide-react";
+import images from "./ArrayImages";
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -49,6 +53,43 @@ const Hero = () => {
   // Maneja la redirección a WhatsApp
   const handleClick = () => {
     window.open(`https://wa.me/${phoneNumber}`, "_blank");
+  };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -131,7 +172,7 @@ const Hero = () => {
                 </button>
               </div>
 
-              <div className="flex items-center flex-wrap text-center justify-center space-x-6 pt-4">
+              <div className="hidden md:flex items-center flex-wrap text-center justify-center space-x-6 pt-4">
                 <div className="flex items-center space-x-2">
                   <Code className="h-5 w-5 text-slate-600" />
                   <span className="text-sm text-slate-600">
@@ -151,16 +192,26 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="flex w-full items-center justify-center lg:order-last">
+            <div className="flex mt-8 p-4 md:p-0 md:mt-0 w-full items-center justify-center lg:order-last">
               <div className="relative w-full">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-3xl opacity-20 animate-pulse"></div>
-                <img
-                  src="/mockup.png?height=400&width=600"
-                  width="600"
-                  height="400"
-                  alt="Desarrollo de Software"
-                  className="relative mx-auto overflow-hidden rounded-2xl object-cover object-top shadow-2xl"
-                />
+                <Slider {...sliderSettings}>
+                  {images?.map((img, index) => (
+                    <div key={index} className="px-2">
+                      <div className="flex justify-center">
+                        <img
+                          src={img}
+                          width="600"
+                          height="400"
+                          alt={`Mockup ${index + 1}`}
+                          className="rounded-2xl shadow-2xl object-cover"
+                          style={{ maxHeight: "400px" }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+
                 <div className="absolute -bottom-4 right-0 md:-bottom-4 md:-right-4 bg-white rounded-lg shadow-lg p-4 border">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
