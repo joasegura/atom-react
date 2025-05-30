@@ -5,7 +5,7 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import WhatsAppBubble from "./components/WhatsAppBubble";
+import WhatsAppBubble from "./components/WhatsappBubble";
 
 function App() {
   return (
