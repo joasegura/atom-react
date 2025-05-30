@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { Mail, Phone, MapPin, Check } from "lucide-react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import emailjs from "@emailjs/browser";
+
+const serviceId = import.meta.env.VITE_SERVICE_ID;
+const templateId = import.meta.env.VITE_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_PUBLIC_KEY_EMAILJS;
 
 const Contact = () => {
   const [sectionRef, isSectionVisible] = useIntersectionObserver();
@@ -19,10 +24,16 @@ const Contact = () => {
     e.preventDefault();
     setFormStatus({ ...formStatus, submitting: true });
 
+    emailjs.sendForm(serviceId, templateId, e.target, publicKey).then(
+      () => {
+        console.log("SUCCESS!");
+      },
+      (error) => {
+        console.log("FAILED...", error.text);
+      }
+    );
     // Simulamos el envío del formulario
     await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    console.log(formData);
 
     setFormStatus({
       submitted: true,
@@ -86,6 +97,7 @@ const Contact = () => {
                     <input
                       type="text"
                       id="name"
+                      name="name" // Añadido name para EmailJS
                       value={formData.name}
                       onChange={handleChange}
                       className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -102,6 +114,7 @@ const Contact = () => {
                     <input
                       type="email"
                       id="email"
+                      name="email" // Añadido name para EmailJS
                       value={formData.email}
                       onChange={handleChange}
                       className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -117,6 +130,7 @@ const Contact = () => {
                     </label>
                     <textarea
                       id="message"
+                      name="message" // Añadido name para EmailJS
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
@@ -124,6 +138,9 @@ const Contact = () => {
                       required
                     ></textarea>
                   </div>
+                  {formStatus.error && (
+                    <p className="text-red-500 text-sm">{formStatus.error}</p>
+                  )}
                   <button
                     type="submit"
                     disabled={formStatus.submitting}
