@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Menu, X, AtomIcon } from 'lucide-react';
+import React, { useState } from "react";
+import { Menu, X, AtomIcon } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'Inicio', href: '#' },
-    { name: 'Nosotros', href: '#about' },
-    { name: 'Servicios', href: '#services' },
-    { name: 'Proceso', href: '#process' },
-    { name: 'Contacto', href: '#contact' },
+    { name: "Inicio", href: "#" },
+    { name: "Nosotros", href: "#about" },
+    { name: "Servicios", href: "#services" },
+    { name: "Proceso", href: "#process" },
+    { name: "Contacto", href: "#contact" },
   ];
 
   return (
@@ -20,29 +20,35 @@ const Navbar = () => {
             <div className="cyber-circle p-2">
               <AtomIcon className="h-8 w-8 text-blue-500" />
             </div>
-            <span className="ml-2 text-xl font-bold text-white neon-text">ATOM Soluciones IT</span>
+            <span className="ml-2 text-xl font-bold text-white neon-text">
+              ATOM Soluciones IT
+            </span>
           </div>
-          
+
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors cyber-circle"
+                  className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   {item.name}
                 </a>
               ))}
             </div>
           </div>
-          
+
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-blue-500 focus:outline-none cyber-circle"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>

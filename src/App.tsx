@@ -1,23 +1,13 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Services from "./components/Services";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import WhatsAppBubble from "./components/WhatsAppBubble";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import OnlineStoreService from "./pages/OnlineStoreService";
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <WhatsAppBubble />
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Contact />
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/ar-tienda" element={<OnlineStoreService />} />
+    </Routes>
   );
 }
 
